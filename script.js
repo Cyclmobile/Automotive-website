@@ -371,21 +371,56 @@ function bindHeaderInteractions() {
     if (e.target.closest("a")) setMenuOpen(false);
   });
 
-  let lastY = window.scrollY;
+  let collapsed = false;
+  let troughY = window.scrollY;
+  let peakY = window.scrollY;
   let ticking = false;
-  const threshold = 80;
-  const delta = 6;
+  let lastStateChangeTime = 0;
+  const showAtTop = 60;
+  const collapseAtY = 140;
+  const collapseDelta = 40;
+  const expandDelta = 60;
+  const bottomBuffer = 12;
+  const stateChangeDebounceMs = 400;
+
+  const setCollapsed = (next) => {
+    if (collapsed === next) return;
+    collapsed = next;
+    mainHeader.classList.toggle("collapsed", next);
+    lastStateChangeTime = Date.now();
+  };
 
   const update = () => {
     const y = Math.max(window.scrollY, 0);
-    const diff = y - lastY;
-    if (Math.abs(diff) > delta) {
-      if (diff > 0 && y > threshold && !header.classList.contains("menu-open")) {
-        mainHeader.classList.add("collapsed");
-      } else if (diff < 0) {
-        mainHeader.classList.remove("collapsed");
+    const maxY =
+      (document.documentElement.scrollHeight || document.body.scrollHeight) -
+      window.innerHeight;
+    const nearBottom = maxY - y <= bottomBuffer;
+    const canChangeState =
+      Date.now() - lastStateChangeTime >= stateChangeDebounceMs;
+
+    if (y <= showAtTop) {
+      setCollapsed(false);
+      troughY = y;
+      peakY = y;
+    } else if (!nearBottom && canChangeState) {
+      if (!collapsed) {
+        if (y < troughY) troughY = y;
+        if (
+          y - troughY > collapseDelta &&
+          y > collapseAtY &&
+          !header.classList.contains("menu-open")
+        ) {
+          setCollapsed(true);
+          peakY = y;
+        }
+      } else {
+        if (y > peakY) peakY = y;
+        if (peakY - y > expandDelta) {
+          setCollapsed(false);
+          troughY = y;
+        }
       }
-      lastY = y;
     }
     ticking = false;
   };
