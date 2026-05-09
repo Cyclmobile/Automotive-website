@@ -80,6 +80,17 @@ a {
   max-width: 1240px;
   margin: 0 auto;
   padding: 14px 28px;
+  max-height: 360px;
+  overflow: hidden;
+  transition: max-height 0.28s ease, padding-top 0.28s ease, padding-bottom 0.28s ease, opacity 0.2s ease;
+}
+
+.main-header.collapsed {
+  max-height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .brand-link {
@@ -920,6 +931,17 @@ main {
 @media (max-width: 1040px) {
   .main-header {
     grid-template-columns: auto minmax(150px, 190px) 1fr;
+    gap: 12px;
+    padding: 10px 20px;
+  }
+
+  .brand-link {
+    width: 144px;
+    height: 60px;
+  }
+
+  .search-box {
+    min-height: 44px;
   }
 
   .mobile-menu {
@@ -931,6 +953,12 @@ main {
     background: var(--brand-soft);
     border-radius: 8px;
     font-size: 24px;
+    cursor: pointer;
+  }
+
+  .site-header.menu-open .mobile-menu {
+    background: var(--brand);
+    color: #ffffff;
   }
 
   .header-actions {
@@ -938,9 +966,45 @@ main {
     justify-content: flex-end;
   }
 
+  .header-actions a {
+    min-height: 40px;
+  }
+
   .search-box {
     grid-column: 1 / -1;
     grid-row: 2;
+  }
+
+  .department-nav {
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 6px 0;
+    overflow: visible;
+    background: #ffffff;
+  }
+
+  .site-header.menu-open .department-nav {
+    display: flex;
+  }
+
+  .department-nav a {
+    justify-content: flex-start;
+    width: 100%;
+    min-height: 46px;
+    padding: 0 24px;
+    font-size: 15px;
+    border-bottom: 1px solid #eef1f6;
+  }
+
+  .department-nav a::after {
+    display: none;
+  }
+
+  .department-nav a.active {
+    background: var(--brand-soft);
+    color: var(--brand);
   }
 
   .category-grid {
@@ -968,34 +1032,55 @@ main {
 @media (max-width: 720px) {
   .service-strip {
     justify-content: flex-start;
-    gap: 15px;
+    gap: 12px;
+    min-height: 28px;
     overflow-x: auto;
-    padding: 0 16px;
+    padding: 0 14px;
+    font-size: 12px;
+  }
+
+  .service-strip ion-icon {
+    font-size: 15px;
   }
 
   .main-header {
-    grid-template-columns: auto minmax(128px, 1fr) auto;
-    gap: 10px;
-    padding: 10px 14px;
+    grid-template-columns: auto minmax(110px, 1fr) auto;
+    gap: 8px;
+    padding: 8px 12px;
   }
 
   .brand-link {
-    width: 132px;
-    height: 62px;
+    width: 108px;
+    height: 48px;
+  }
+
+  .search-box {
+    min-height: 40px;
+  }
+
+  .search-box button {
+    padding: 0 16px;
+    font-size: 14px;
   }
 
   .header-actions {
     grid-column: 1 / -1;
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 6px;
+    gap: 4px;
     width: 100%;
   }
 
   .header-actions a {
     justify-content: center;
     min-width: 0;
-    padding: 0 8px;
+    min-height: 36px;
+    padding: 0 6px;
+    font-size: 12px;
+  }
+
+  .header-actions ion-icon {
+    font-size: 19px;
   }
 
   .header-actions span {
@@ -1003,8 +1088,13 @@ main {
   }
 
   .department-nav {
-    justify-content: flex-start;
-    padding: 0 14px 10px;
+    padding: 4px 0;
+  }
+
+  .department-nav a {
+    min-height: 44px;
+    padding: 0 18px;
+    font-size: 14px;
   }
 
   .hero-section {

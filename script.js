@@ -345,6 +345,63 @@ function setFooterYear() {
   $("#footer-year").textContent = new Date().getFullYear();
 }
 
+function bindHeaderInteractions() {
+  const header = document.querySelector(".site-header");
+  const mainHeader = document.querySelector(".main-header");
+  const burger = document.querySelector(".mobile-menu");
+  const burgerIcon = burger?.querySelector("ion-icon");
+  const departmentNav = document.querySelector(".department-nav");
+  if (!header || !mainHeader) return;
+
+  const setMenuOpen = (open) => {
+    header.classList.toggle("menu-open", open);
+    burger?.setAttribute("aria-expanded", String(open));
+    burgerIcon?.setAttribute("name", open ? "close-outline" : "menu-outline");
+    if (open) mainHeader.classList.remove("collapsed");
+  };
+
+  if (burger) {
+    burger.setAttribute("aria-expanded", "false");
+    burger.addEventListener("click", () => {
+      setMenuOpen(!header.classList.contains("menu-open"));
+    });
+  }
+
+  departmentNav?.addEventListener("click", (e) => {
+    if (e.target.closest("a")) setMenuOpen(false);
+  });
+
+  let lastY = window.scrollY;
+  let ticking = false;
+  const threshold = 80;
+  const delta = 6;
+
+  const update = () => {
+    const y = Math.max(window.scrollY, 0);
+    const diff = y - lastY;
+    if (Math.abs(diff) > delta) {
+      if (diff > 0 && y > threshold && !header.classList.contains("menu-open")) {
+        mainHeader.classList.add("collapsed");
+      } else if (diff < 0) {
+        mainHeader.classList.remove("collapsed");
+      }
+      lastY = y;
+    }
+    ticking = false;
+  };
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (!ticking) {
+        window.requestAnimationFrame(update);
+        ticking = true;
+      }
+    },
+    { passive: true },
+  );
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   document.title = "WheelWare";
   renderDepartmentNav();
@@ -352,4 +409,5 @@ document.addEventListener("DOMContentLoaded", () => {
   renderProducts();
   bindSearch();
   setFooterYear();
+  bindHeaderInteractions();
 });
