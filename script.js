@@ -1,448 +1,293 @@
-const departments = [
-  "Alle",
-  "Bil",
-  "Dæk & fælge",
-  "Reservedele",
-  "Værktøj",
-  "Cykel",
-  "MC",
-  "Camping",
-  "Båd",
-  "Tilbud",
-  "Outlet",
-];
-
-const categoryTiles = [
-  {
-    name: "Dæk & fælge",
-    meta: "Sommer, vinter og helår",
-    filter: "Dæk & fælge",
-    icon: "car-sport-outline",
-    tone: "blue",
-  },
-  {
-    name: "Reservedele",
-    meta: "Bremser, filtre og pærer",
-    filter: "Reservedele",
-    icon: "battery-charging-outline",
-    tone: "ink",
-  },
-  {
-    name: "Værktøj",
-    meta: "Til garage og bilpleje",
-    filter: "Værktøj",
-    icon: "construct-outline",
-    tone: "steel",
-  },
-  {
-    name: "Cykel",
-    meta: "Dele, lys og låse",
-    filter: "Cykel",
-    icon: "bicycle-outline",
-    tone: "sky",
-  },
-  {
-    name: "Camping",
-    meta: "Tagbokse og fritid",
-    filter: "Camping",
-    icon: "cube-outline",
-    tone: "gold",
-  },
-  {
-    name: "Båd",
-    meta: "Udstyr til vandet",
-    filter: "Båd",
-    icon: "boat-outline",
-    tone: "blue",
-  },
-];
-
 const products = [
-  {
-    id: 1,
-    title: 'WheelWare Alloy Pro 18"',
-    category: "Dæk & fælge",
-    spec: "Komplet sæt med monterede sommerdæk",
-    price: "5.999",
-    oldPrice: "7.199",
-    badge: "Spar 1.200",
-    rating: "4.8",
-    image:
-      "https://iconicalloys.co.uk/cdn/shop/files/PRORACE1_2glossblack3qtr.jpg?v=1746050750&width=1946",
-  },
-  {
-    id: 2,
-    title: "Premium bremsesæt",
-    category: "Reservedele",
-    spec: "Skiver og klodser til populære bilmodeller",
-    price: "1.249",
-    oldPrice: "1.699",
-    badge: "Tilbud",
-    rating: "4.7",
-    image:
-      "https://www.bsr-tuning.dk/assets/images/general_products/big/150_big.jpg",
-  },
-  {
-    id: 3,
-    title: "Garage Master værktøjsvogn",
-    category: "Værktøj",
-    spec: "7 skuffer, lås og kuglelejeskinner",
-    price: "2.799",
-    oldPrice: "3.499",
-    badge: "Nyhed",
-    rating: "4.9",
-    image:
-      "https://dagensbolig.dk/wp-content/uploads/2025/05/Ov842118a81d8ea94.jpg",
-  },
-  {
-    id: 4,
-    title: "StartBoost batterilader",
-    category: "Reservedele",
-    spec: "12V intelligent opladning og vedligehold",
-    price: "399",
-    oldPrice: "549",
-    badge: "Spar 150",
-    rating: "4.6",
-    image: "https://akkumulator.dk/wp-content/uploads/2017/06/products-p90.jpg",
-  },
-  {
-    id: 5,
-    title: "LED arbejdslygte duo",
-    category: "Tilbud",
-    spec: "Magnetfod, USB-C og 1200 lumen",
-    price: "249",
-    oldPrice: "399",
-    badge: "Kampagne",
-    rating: "4.5",
-    image: "https://m.media-amazon.com/images/I/81ukadjP2YL._AC_SX679_.jpg",
-  },
-  {
-    id: 6,
-    title: "Cykelservice pakke",
-    category: "Cykel",
-    spec: "Kædeolie, slange, lygter og multiværktøj",
-    price: "329",
-    oldPrice: "499",
-    badge: "Pakkepris",
-    rating: "4.7",
-    image:
-      "https://amarcykelservice.dk/wp-content/uploads/2026/04/Woom-Fully-Equipped-Bundle-Pakke-500x500.png",
-  },
-  {
-    id: 7,
-    title: 'Nokian vinterdæk 17"',
-    category: "Dæk & fælge",
-    spec: "Sæt med 4 dæk - kraftigt vintergreb",
-    price: "3.499",
-    oldPrice: "4.299",
-    badge: "Spar 800",
-    rating: "4.9",
-    image:
-      "https://cdn.pkwteile.de/thumb?id=21880770&m=0&n=0&lng=dk&rev=94078017",
-  },
-  {
-    id: 8,
-    title: "Castrol motorolie 5W-30",
-    category: "Reservedele",
-    spec: "5 liter helsyntetisk - til moderne benzin & diesel",
-    price: "299",
-    oldPrice: "449",
-    badge: "Spar 150",
-    rating: "4.8",
-    image: "https://shop11223.sfstatic.io/upload_dir/shop/5w30-m-5l.jpg",
-  },
-  {
-    id: 9,
-    title: "Donkraft 3T hydraulisk",
-    category: "Værktøj",
-    spec: "Stabil hydraulisk donkraft - 3000 kg",
-    price: "699",
-    oldPrice: "899",
-    badge: "Bestseller",
-    rating: "4.7",
-    image:
-      "https://www.autobixen.dk/media/catalog/product/cache/1/image/800x800/9df78eab33525d08d6e5fb8d27136e95/i/m/import_110_0677811_1_1.jpg",
-  },
-  {
-    id: 10,
-    title: "Thule tagboks 450L",
-    category: "Camping",
-    spec: "Aerodynamisk tagboks med dobbelt åbning",
-    price: "4.299",
-    oldPrice: "4.999",
-    badge: "Sæson",
-    rating: "4.8",
-    image:
-      "https://lejboxen.dk/wp-content/uploads/2024/01/Pacific-200-e1705070374724.jpg",
-  },
-  {
-    id: 11,
-    title: "MC sommerhandsker",
-    category: "MC",
-    spec: "Læderhandsker med ventilation og knokkelbeskyttelse",
-    price: "549",
-    oldPrice: "799",
-    badge: "Tilbud",
-    rating: "4.6",
-    image:
-      "https://sw7102.sfstatic.io/upload_dir/shop/category/_thumbs/Held-Sambia-MC-Sommerhandske-2.w1200.jpg",
-  },
-  {
-    id: 12,
-    title: "Bilvask Premium kit",
-    category: "Tilbud",
-    spec: "Shampoo, voks, mikrofibre og fælgrens",
-    price: "199",
-    oldPrice: "349",
-    badge: "Spar 150",
-    rating: "4.5",
-    image: "https://m.media-amazon.com/images/I/81phCVcpJOL._AC_SX679_.jpg",
-  },
+  { id: 1, title: "Trådløs håndstøvsuger", category: "Rengøring", description: "Kraftig, kompakt støvsuger med vaskbart filter og komplet mundstykkesæt.", price: 449, oldPrice: 599, badge: "Bestseller", rating: "4,9", image: "assets/products/handheld-vacuum.png" },
+  { id: 2, title: "4-i-1 biloplader", category: "Elektronik", description: "USB-C PD, USB-A og integrerede kabler samlet i én kompakt oplader.", price: 299, oldPrice: 399, badge: "Nyhed", rating: "4,8", image: "assets/products/multi-car-charger.png" },
+  { id: 3, title: "Smart opbevaringssæt", category: "Organisering", description: "Fire diskrete beholdere til småting og affald i kabinen.", price: 249, oldPrice: 329, badge: "Sætpris", rating: "4,7", image: "assets/products/car-storage-set.png" },
+  { id: 4, title: "Foldbar magnetisk mobilholder", category: "Elektronik", description: "Stabil, justerbar holder med sugekop og pladsbesparende foldedesign.", price: 349, oldPrice: 449, badge: "Populær", rating: "4,9", image: "assets/products/magnetic-phone-holder.png" },
+  { id: 5, title: "Minimalistisk bilduft", category: "Komfort", description: "Kompakt og diskret luftfrisker med regulerbar duftåbning.", price: 129, oldPrice: 169, badge: "Nyhed", rating: "4,6", image: "assets/products/car-air-freshener.png" },
 ];
 
-const state = {
-  productSearch: "",
-  activeCategory: "Alle",
-  cartCount: 0,
-};
+const categories = ["Alle", ...new Set(products.map((product) => product.category))];
+let activeCategory = "Alle";
+let cart = loadCart();
+let paypalReady = false;
+let cardFields;
 
-const $ = (sel) => document.querySelector(sel);
+const productGrid = document.querySelector("#product-grid");
+const filterRow = document.querySelector("#filter-row");
+const emptyState = document.querySelector("#empty-state");
+const cartBadge = document.querySelector("#cart-count");
+const toast = document.querySelector("#toast");
+const cartDrawer = document.querySelector("#cart-drawer");
+const cartBackdrop = document.querySelector("#cart-backdrop");
+const cartItems = document.querySelector("#cart-items");
+const cartEmpty = document.querySelector("#cart-empty");
+const cartCheckout = document.querySelector("#cart-checkout");
+const paymentStatus = document.querySelector("#payment-status");
 
-function renderDepartmentNav() {
-  const nav = $("#department-nav");
-  nav.innerHTML = departments
-    .map(
-      (d) =>
-        `<a href="#products" data-department="${d}" class="${
-          state.activeCategory === d ? "active" : ""
-        }">${d}</a>`,
-    )
-    .join("");
-
-  nav.querySelectorAll("a").forEach((el) => {
-    el.addEventListener("click", (e) => {
-      e.preventDefault();
-      selectDepartment(el.dataset.department);
-      document
-        .getElementById("products")
-        ?.scrollIntoView({ behavior: "smooth" });
-    });
-  });
+function money(value) {
+  return `${new Intl.NumberFormat("da-DK").format(value)} kr.`;
 }
 
-function renderCategoryGrid() {
-  const grid = $("#category-grid");
-  grid.innerHTML = categoryTiles
-    .map(
-      (c) => `
-        <button type="button" class="category-card" data-filter="${c.filter}">
-          <span class="category-icon ${c.tone}">
-            <ion-icon aria-hidden="true" name="${c.icon}"></ion-icon>
-          </span>
-          <span class="category-name">${c.name}</span>
-          <span class="category-meta">${c.meta}</span>
-        </button>
-      `,
-    )
-    .join("");
-
-  grid.querySelectorAll(".category-card").forEach((el) => {
-    el.addEventListener("click", () => {
-      selectDepartment(el.dataset.filter);
-      document
-        .getElementById("products")
-        ?.scrollIntoView({ behavior: "smooth" });
-    });
-  });
+function loadCart() {
+  try {
+    const saved = JSON.parse(localStorage.getItem("wheelware-cart"));
+    return Array.isArray(saved) ? saved : [];
+  } catch {
+    return [];
+  }
 }
 
-function getVisibleProducts() {
-  const search = state.productSearch.trim().toLowerCase();
-  return products.filter((p) => {
-    const matchesCategory =
-      state.activeCategory === "Alle" ||
-      state.activeCategory === p.category ||
-      state.activeCategory === "Bil";
-    const matchesSearch =
-      !search ||
-      `${p.title} ${p.category} ${p.spec}`.toLowerCase().includes(search);
-    return matchesCategory && matchesSearch;
+function saveCart() {
+  localStorage.setItem("wheelware-cart", JSON.stringify(cart));
+}
+
+function cartPayload() {
+  return cart.map(({ id, quantity }) => ({ id, quantity }));
+}
+
+function cartQuantity() {
+  return cart.reduce((sum, item) => sum + item.quantity, 0);
+}
+
+function cartTotal() {
+  return cart.reduce((sum, item) => {
+    const product = products.find(({ id }) => id === item.id);
+    return sum + (product?.price || 0) * item.quantity;
+  }, 0);
+}
+
+function renderFilters() {
+  filterRow.innerHTML = categories.map((category) => `<button class="${category === activeCategory ? "active" : ""}" data-category="${category}" type="button">${category}</button>`).join("");
+  filterRow.querySelectorAll("button").forEach((button) => {
+    button.addEventListener("click", () => {
+      activeCategory = button.dataset.category;
+      renderFilters();
+      renderProducts();
+    });
   });
 }
 
 function renderProducts() {
-  const grid = $("#product-grid");
-  const empty = $("#empty-state");
-  const visible = getVisibleProducts();
+  const visibleProducts = activeCategory === "Alle" ? products : products.filter((product) => product.category === activeCategory);
+  emptyState.hidden = visibleProducts.length > 0;
+  productGrid.innerHTML = visibleProducts.map((product) => `
+    <article class="product-card">
+      <div class="product-image">
+        <img src="${product.image}" alt="${product.title}" />
+        <span class="product-badge">${product.badge}</span>
+        <button class="favorite" type="button" aria-label="Gem ${product.title}"><ion-icon name="heart-outline"></ion-icon></button>
+      </div>
+      <div class="product-content">
+        <span class="product-category">${product.category}</span>
+        <h3>${product.title}</h3>
+        <p>${product.description}</p>
+        <div class="rating"><ion-icon name="star"></ion-icon><strong>${product.rating}</strong><span>(24)</span></div>
+        <div class="product-footer">
+          <div class="price"><del>${money(product.oldPrice)}</del><strong>${money(product.price)}</strong></div>
+          <button class="add-button" type="button" data-add="${product.id}"><ion-icon name="add-outline"></ion-icon><span>Tilføj</span></button>
+        </div>
+      </div>
+    </article>`).join("");
 
-  empty.hidden = visible.length !== 0;
+  productGrid.querySelectorAll("[data-add]").forEach((button) => button.addEventListener("click", () => addToCart(Number(button.dataset.add))));
+  productGrid.querySelectorAll(".favorite").forEach((button) => button.addEventListener("click", () => {
+    const selected = button.classList.toggle("selected");
+    button.querySelector("ion-icon").setAttribute("name", selected ? "heart" : "heart-outline");
+  }));
+}
 
-  grid.innerHTML = visible
-    .map(
-      (p) => `
-        <article class="product-card">
-          <div class="product-visual">
-            <img
-              src="${p.image}"
-              alt="${p.title}"
-              loading="lazy"
-              onerror="this.onerror=null;this.src='https://picsum.photos/seed/wheelware-${p.id}/800/600';"
-            />
-            <span class="badge">${p.badge}</span>
+function addToCart(id) {
+  const existing = cart.find((item) => item.id === id);
+  if (existing) existing.quantity += 1;
+  else cart.push({ id, quantity: 1 });
+  updateCart();
+  toast.classList.add("show");
+  window.clearTimeout(window.toastTimer);
+  window.toastTimer = window.setTimeout(() => toast.classList.remove("show"), 2200);
+}
+
+function changeQuantity(id, change) {
+  const item = cart.find((entry) => entry.id === id);
+  if (!item) return;
+  item.quantity += change;
+  if (item.quantity <= 0) cart = cart.filter((entry) => entry.id !== id);
+  updateCart();
+}
+
+function removeFromCart(id) {
+  cart = cart.filter((item) => item.id !== id);
+  updateCart();
+}
+
+function updateCart() {
+  saveCart();
+  cartBadge.textContent = cartQuantity();
+  const hasItems = cart.length > 0;
+  cartEmpty.hidden = hasItems;
+  cartCheckout.hidden = !hasItems;
+  cartItems.hidden = !hasItems;
+  document.querySelector("#cart-subtotal").textContent = money(cartTotal());
+  document.querySelector("#cart-total").textContent = money(cartTotal());
+
+  cartItems.innerHTML = cart.map((item) => {
+    const product = products.find(({ id }) => id === item.id);
+    return `
+      <article class="cart-item">
+        <img src="${product.image}" alt="${product.title}" />
+        <div>
+          <h3>${product.title}</h3>
+          <span class="cart-item-price">${money(product.price)}</span>
+          <div class="quantity-control">
+            <button type="button" data-decrease="${item.id}" aria-label="Fjern én ${product.title}"><ion-icon name="remove-outline"></ion-icon></button>
+            <span>${item.quantity}</span>
+            <button type="button" data-increase="${item.id}" aria-label="Tilføj én ${product.title}"><ion-icon name="add-outline"></ion-icon></button>
           </div>
-          <div class="product-body">
-            <span class="product-category">${p.category}</span>
-            <h3>${p.title}</h3>
-            <p>${p.spec}</p>
-            <div class="rating-row">
-              <ion-icon aria-hidden="true" name="star"></ion-icon>
-              <span>${p.rating}</span>
-            </div>
-            <div class="price-row">
-              <div>
-                <span class="old-price">${p.oldPrice} kr.</span>
-                <strong>${p.price} kr.</strong>
-              </div>
-              <button type="button" data-add-to-cart aria-label="Tilføj til kurv">
-                <ion-icon aria-hidden="true" name="add-outline"></ion-icon>
-              </button>
-            </div>
-          </div>
-        </article>
-      `,
-    )
-    .join("");
+        </div>
+        <button class="remove-item" type="button" data-remove="${item.id}" aria-label="Fjern ${product.title}"><ion-icon name="trash-outline"></ion-icon></button>
+      </article>`;
+  }).join("");
 
-  grid.querySelectorAll("[data-add-to-cart]").forEach((btn) => {
-    btn.addEventListener("click", addToCart);
+  cartItems.querySelectorAll("[data-decrease]").forEach((button) => button.addEventListener("click", () => changeQuantity(Number(button.dataset.decrease), -1)));
+  cartItems.querySelectorAll("[data-increase]").forEach((button) => button.addEventListener("click", () => changeQuantity(Number(button.dataset.increase), 1)));
+  cartItems.querySelectorAll("[data-remove]").forEach((button) => button.addEventListener("click", () => removeFromCart(Number(button.dataset.remove))));
+
+  if (hasItems && !paypalReady) initializePayPal();
+}
+
+function openCart() {
+  document.body.classList.add("cart-open");
+  cartBackdrop.hidden = false;
+  cartDrawer.classList.add("open");
+  cartDrawer.setAttribute("aria-hidden", "false");
+  updateCart();
+}
+
+function closeCart() {
+  document.body.classList.remove("cart-open");
+  cartDrawer.classList.remove("open");
+  cartDrawer.setAttribute("aria-hidden", "true");
+  window.setTimeout(() => { cartBackdrop.hidden = true; }, 250);
+}
+
+function setPaymentStatus(message, isError = false) {
+  paymentStatus.textContent = message;
+  paymentStatus.classList.toggle("error", isError);
+}
+
+async function apiRequest(url, options = {}) {
+  const response = await fetch(url, {
+    ...options,
+    headers: { "Content-Type": "application/json", ...(options.headers || {}) },
   });
+  const data = await response.json().catch(() => ({}));
+  if (!response.ok) throw new Error(data.message || "Betalingen kunne ikke gennemføres.");
+  return data;
 }
 
-function selectDepartment(department) {
-  state.activeCategory = department;
-  renderDepartmentNav();
-  renderProducts();
-}
-
-function addToCart() {
-  state.cartCount += 1;
-  $("#cart-count").textContent = state.cartCount;
-}
-
-function bindSearch() {
-  const input = $("#product-search");
-  const form = $("#search-form");
-
-  input.addEventListener("input", (e) => {
-    state.productSearch = e.target.value;
-    renderProducts();
+async function createPayPalOrder() {
+  const order = await apiRequest("/api/paypal/orders", {
+    method: "POST",
+    body: JSON.stringify({ cart: cartPayload() }),
   });
-
-  form.addEventListener("submit", (e) => e.preventDefault());
+  return order.id;
 }
 
-function setFooterYear() {
-  $("#footer-year").textContent = new Date().getFullYear();
+async function capturePayPalOrder(orderID) {
+  return apiRequest(`/api/paypal/orders/${encodeURIComponent(orderID)}/capture`, { method: "POST" });
 }
 
-function bindHeaderInteractions() {
-  const header = document.querySelector(".site-header");
-  const mainHeader = document.querySelector(".main-header");
-  const burger = document.querySelector(".mobile-menu");
-  const burgerIcon = burger?.querySelector("ion-icon");
-  const departmentNav = document.querySelector(".department-nav");
-  if (!header || !mainHeader) return;
+function completePayment(details) {
+  const orderId = details.id || details.orderID || "";
+  cart = [];
+  updateCart();
+  closeCart();
+  document.querySelector("#payment-success-message").textContent = orderId
+    ? `Betalingen er godkendt. Ordrenummer: ${orderId}`
+    : "Betalingen er godkendt.";
+  document.querySelector("#payment-success").hidden = false;
+}
 
-  const setMenuOpen = (open) => {
-    header.classList.toggle("menu-open", open);
-    burger?.setAttribute("aria-expanded", String(open));
-    burgerIcon?.setAttribute("name", open ? "close-outline" : "menu-outline");
-    if (open) mainHeader.classList.remove("collapsed");
-  };
-
-  if (burger) {
-    burger.setAttribute("aria-expanded", "false");
-    burger.addEventListener("click", () => {
-      setMenuOpen(!header.classList.contains("menu-open"));
-    });
-  }
-
-  departmentNav?.addEventListener("click", (e) => {
-    if (e.target.closest("a")) setMenuOpen(false);
-  });
-
-  let collapsed = false;
-  let troughY = window.scrollY;
-  let peakY = window.scrollY;
-  let ticking = false;
-  let lastStateChangeTime = 0;
-  const showAtTop = 60;
-  const collapseAtY = 140;
-  const collapseDelta = 40;
-  const expandDelta = 60;
-  const bottomBuffer = 12;
-  const stateChangeDebounceMs = 400;
-
-  const setCollapsed = (next) => {
-    if (collapsed === next) return;
-    collapsed = next;
-    mainHeader.classList.toggle("collapsed", next);
-    lastStateChangeTime = Date.now();
-  };
-
-  const update = () => {
-    const y = Math.max(window.scrollY, 0);
-    const maxY =
-      (document.documentElement.scrollHeight || document.body.scrollHeight) -
-      window.innerHeight;
-    const nearBottom = maxY - y <= bottomBuffer;
-    const canChangeState =
-      Date.now() - lastStateChangeTime >= stateChangeDebounceMs;
-
-    if (y <= showAtTop) {
-      setCollapsed(false);
-      troughY = y;
-      peakY = y;
-    } else if (!nearBottom && canChangeState) {
-      if (!collapsed) {
-        if (y < troughY) troughY = y;
-        if (
-          y - troughY > collapseDelta &&
-          y > collapseAtY &&
-          !header.classList.contains("menu-open")
-        ) {
-          setCollapsed(true);
-          peakY = y;
-        }
-      } else {
-        if (y > peakY) peakY = y;
-        if (peakY - y > expandDelta) {
-          setCollapsed(false);
-          troughY = y;
-        }
-      }
+async function initializePayPal() {
+  paypalReady = true;
+  try {
+    const config = await apiRequest("/api/paypal/config");
+    if (!config.configured) {
+      setPaymentStatus("Onlinebetaling er ikke aktiveret endnu. PayPal-kontoen skal forbindes, før butikken går live.", true);
+      return;
     }
-    ticking = false;
-  };
 
-  window.addEventListener(
-    "scroll",
-    () => {
-      if (!ticking) {
-        window.requestAnimationFrame(update);
-        ticking = true;
-      }
-    },
-    { passive: true },
-  );
+    await new Promise((resolve, reject) => {
+      const script = document.createElement("script");
+      script.src = `https://www.paypal.com/sdk/js?client-id=${encodeURIComponent(config.clientId)}&currency=${encodeURIComponent(config.currency)}&components=buttons,card-fields&intent=capture`;
+      script.onload = resolve;
+      script.onerror = () => reject(new Error("PayPal kunne ikke indlæses."));
+      document.head.appendChild(script);
+    });
+
+    setPaymentStatus(config.environment === "live" ? "Vælg PayPal eller betalingskort." : "Sandbox er aktiv – brug en PayPal testkonto.");
+
+    window.paypal.Buttons({
+      style: { layout: "vertical", color: "blue", shape: "rect", label: "paypal", height: 46 },
+      createOrder: createPayPalOrder,
+      onApprove: async ({ orderID }) => completePayment(await capturePayPalOrder(orderID)),
+      onCancel: () => setPaymentStatus("Betalingen blev annulleret. Din kurv er gemt."),
+      onError: (error) => setPaymentStatus(error.message || "Der opstod en fejl under betalingen.", true),
+    }).render("#paypal-button-container");
+
+    cardFields = window.paypal.CardFields({
+      createOrder: createPayPalOrder,
+      onApprove: async ({ orderID }) => completePayment(await capturePayPalOrder(orderID)),
+      onError: (error) => setPaymentStatus(error.message || "Kortbetalingen kunne ikke gennemføres.", true),
+    });
+
+    if (cardFields.isEligible()) {
+      document.querySelector("#card-payment").hidden = false;
+      cardFields.NameField().render("#card-name-field");
+      cardFields.NumberField().render("#card-number-field");
+      cardFields.ExpiryField().render("#card-expiry-field");
+      cardFields.CVVField().render("#card-cvv-field");
+    }
+  } catch (error) {
+    paypalReady = false;
+    setPaymentStatus(error.message || "Checkout kunne ikke indlæses.", true);
+  }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  document.title = "WheelWare";
-  renderDepartmentNav();
-  renderCategoryGrid();
-  renderProducts();
-  bindSearch();
-  setFooterYear();
-  bindHeaderInteractions();
+document.querySelector("#card-submit").addEventListener("click", async () => {
+  if (!cardFields) return;
+  try {
+    const state = await cardFields.getState();
+    if (!state.isFormValid) {
+      setPaymentStatus("Kontrollér kortoplysningerne og prøv igen.", true);
+      return;
+    }
+    await cardFields.submit();
+  } catch (error) {
+    setPaymentStatus(error.message || "Kortbetalingen kunne ikke gennemføres.", true);
+  }
 });
+
+document.querySelector("#cart-button").addEventListener("click", openCart);
+document.querySelector("#cart-close").addEventListener("click", closeCart);
+document.querySelector("#continue-shopping").addEventListener("click", closeCart);
+cartBackdrop.addEventListener("click", closeCart);
+document.addEventListener("keydown", (event) => { if (event.key === "Escape") closeCart(); });
+document.querySelector("#payment-success-close").addEventListener("click", () => { document.querySelector("#payment-success").hidden = true; });
+
+const menuButton = document.querySelector("#menu-button");
+const mainNav = document.querySelector("#main-nav");
+menuButton.addEventListener("click", () => {
+  const open = mainNav.classList.toggle("open");
+  menuButton.setAttribute("aria-expanded", String(open));
+  menuButton.querySelector("ion-icon").setAttribute("name", open ? "close-outline" : "menu-outline");
+});
+mainNav.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => {
+  mainNav.classList.remove("open");
+  menuButton.setAttribute("aria-expanded", "false");
+  menuButton.querySelector("ion-icon").setAttribute("name", "menu-outline");
+}));
+
+document.querySelector("#footer-year").textContent = new Date().getFullYear();
+renderFilters();
+renderProducts();
+updateCart();

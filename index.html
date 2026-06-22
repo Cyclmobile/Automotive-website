@@ -4,244 +4,227 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WheelWare</title>
+  <meta name="description" content="WheelWare – smarte produkter, der gør hver køretur enklere." />
+  <title>WheelWare | Smart udstyr til bilen</title>
   <link rel="stylesheet" href="styles.css" />
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 
 <body>
-  <div class="storefront-shell">
-    <header class="site-header">
-      <div class="service-strip" aria-label="Kundeservice">
-        <a href="#support">
-          <ion-icon aria-hidden="true" name="call-outline"></ion-icon>
-          Kundeservice
-        </a>
-        <a href="#stores">
-          <ion-icon aria-hidden="true" name="location-outline"></ion-icon>
-          Butikker
-        </a>
-        <span>
-          <ion-icon aria-hidden="true" name="time-outline"></ion-icon>
-          Levering fra 0 kr.
-        </span>
-      </div>
+  <header class="site-header">
+    <div class="announcement">
+      <span><ion-icon name="car-sport-outline"></ion-icon> Udstyr udvalgt til hverdagen i bilen</span>
+      <span><ion-icon name="cube-outline"></ion-icon> Hurtig levering fra Danmark</span>
+      <span><ion-icon name="options-outline"></ion-icon>Nøje udvalgte produkter</span>
+    </div>
 
-      <div class="main-header">
-        <button class="icon-button mobile-menu" type="button" aria-label="Menu">
-          <ion-icon aria-hidden="true" name="menu-outline"></ion-icon>
-        </button>
+    <div class="nav-shell">
+      <a class="brand" href="#" aria-label="WheelWare forside">
+        <img src="wheelware-logo.png" alt="WheelWare" />
+      </a>
 
-        <a class="brand-link" href="/" aria-label="WheelWare forside">
-          <img src="wheelware-logo.png" alt="WheelWare" />
-        </a>
+      <button class="menu-button" id="menu-button" type="button" aria-label="Åbn menu" aria-expanded="false">
+        <ion-icon name="menu-outline"></ion-icon>
+      </button>
 
-        <form class="search-box" role="search" id="search-form">
-          <ion-icon aria-hidden="true" name="search-outline"></ion-icon>
-          <input id="product-search" type="search" placeholder="Søg efter dæk, fælge, reservedele..."
-            aria-label="Søg i butikken" />
-          <button type="submit">Søg</button>
-        </form>
+      <nav class="main-nav" id="main-nav" aria-label="Primær navigation">
+        <a href="#products">Produkter</a>
+        <a href="#why-us">Hvorfor WheelWare?</a>
+        <a href="#support">Kundeservice</a>
+      </nav>
 
-        <nav class="header-actions" aria-label="Hurtige handlinger">
-          <a href="#stores">
-            <ion-icon aria-hidden="true" name="storefront-outline"></ion-icon>
-            <span>Find butik</span>
-          </a>
-          <a href="#account">
-            <ion-icon aria-hidden="true" name="person-outline"></ion-icon>
-            <span>Log ind</span>
-          </a>
-          <a href="#basket" class="cart-action">
-            <ion-icon aria-hidden="true" name="cart-outline"></ion-icon>
-            <span>Kurv</span>
-            <strong id="cart-count">0</strong>
-          </a>
-        </nav>
-      </div>
+      <button class="cart-link" id="cart-button" type="button" aria-label="Åbn kurv">
+        <ion-icon name="bag-handle-outline"></ion-icon>
+        <span>Kurv</span>
+        <strong id="cart-count">0</strong>
+      </button>
+    </div>
+  </header>
 
-      <nav class="department-nav" id="department-nav" aria-label="Varegrupper"></nav>
-    </header>
-
-    <main>
-      <section class="hero-section" aria-labelledby="hero-title">
-        <div class="hero-inner">
-          <div class="hero-copy">
-            <div class="hero-kicker">Autoudstyr - reservedele - dæk</div>
-            <h1 id="hero-title">WheelWare</h1>
-            <p>
-              Alt til bilen, værkstedet og hjulsæsonen samlet i en hurtig
-              netbutik med butikslager, click &amp; collect og skarpe pakkepriser.
-            </p>
-            <div class="hero-actions">
-              <a href="#products" class="primary-action">
-                <ion-icon aria-hidden="true" name="pricetag-outline"></ion-icon>
-                Se tilbud
-              </a>
-              <a href="#stores" class="secondary-action">
-                <ion-icon aria-hidden="true" name="storefront-outline"></ion-icon>
-                Find butik
-              </a>
-            </div>
-          </div>
-
-          <div class="hero-product" aria-label="WheelWare kampagne">
-            <div class="sale-tag">Ny sæson</div>
-            <div class="wheel-visual" aria-hidden="true">
-              <span class="wheel-ring"></span>
-              <span class="wheel-spoke spoke-one"></span>
-              <span class="wheel-spoke spoke-two"></span>
-              <span class="wheel-spoke spoke-three"></span>
-              <span class="wheel-hub"></span>
-            </div>
-            <div class="hero-product-copy">
-              <span>Komplet hjulpakke</span>
-              <strong>fra 3.999 kr.</strong>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="category-section" aria-labelledby="category-title">
-        <div class="section-heading">
-          <div>
-            <span class="section-eyebrow">Shop efter behov</span>
-            <h2 id="category-title">Populære kategorier</h2>
-          </div>
-          <a href="#products">
-            Alle kategorier
-            <ion-icon aria-hidden="true" name="chevron-forward-outline"></ion-icon>
-          </a>
-        </div>
-
-        <div class="category-grid" id="category-grid"></div>
-      </section>
-
-      <section id="products" class="products-section" aria-labelledby="products-title">
-        <div class="section-heading">
-          <div>
-            <span class="section-eyebrow">Aktuelle varer</span>
-            <h2 id="products-title">Tilbud og bestsellere</h2>
-          </div>
-        </div>
-
-        <div class="product-grid" id="product-grid"></div>
-
-        <p class="empty-state" id="empty-state" hidden>
-          Ingen varer matcher din søgning.
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">Smarte løsninger til bilen</span>
+        <h1>Mere orden.<br />Mindre besvær.</h1>
+        <p>
+          Gennemtænkte produkter, der holder bilen ren, organiseret,
+          opladet og klar til hverdagens ture.
         </p>
-      </section>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#products">Se alle produkter</a>
+          <a class="text-link" href="#why-us">Derfor vælger kunder os <ion-icon
+              name="arrow-forward-outline"></ion-icon></a>
+        </div>
+        <div class="hero-proof">
+          <div><strong>5</strong><span>udvalgte produkter</span></div>
+          <div><strong>Enkelt</strong><span>sortiment</span></div>
+          <div><strong>4,8</strong><span>kundevurdering</span></div>
+        </div>
+      </div>
 
-      <section class="campaign-section" aria-labelledby="campaign-title">
+      <div class="hero-visual">
+        <span class="hero-badge">Bestseller</span>
+        <img src="assets/products/handheld-vacuum.png" alt="WheelWare håndstøvsuger med tilbehør" />
+        <div class="floating-note">
+          <ion-icon name="sparkles-outline"></ion-icon>
+          <span><strong>Ren bil på få minutter</strong>Trådløs og kompakt</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="benefit-strip" aria-label="Fordele">
+      <div><ion-icon name="checkmark-circle-outline"></ion-icon><span><strong>Kun det, du har brug for</strong>Et
+          enkelt, fokuseret sortiment</span></div>
+      <div><ion-icon name="flash-outline"></ion-icon><span><strong>Designet til hverdagen</strong>Praktisk udstyr uden
+          overflødige funktioner</span></div>
+    </section>
+
+    <section class="products-section" id="products">
+      <div class="section-heading">
         <div>
-          <span class="section-eyebrow">Klar til sæsonen</span>
-          <h2 id="campaign-title">Sommerklargøring af bil og garage</h2>
-          <p>
-            Fyld kurven med vask, olie, batteripleje, tagbokse og
-            værkstedsudstyr.
-          </p>
+          <span class="eyebrow">Hele sortimentet</span>
+          <h2>Alt til en smartere køretur</h2>
         </div>
-        <a href="#products" class="secondary-action light">
-          <ion-icon aria-hidden="true" name="flash-outline"></ion-icon>
-          Shop kampagnen
-        </a>
-      </section>
-
-      <section class="service-section" aria-label="WheelWare service">
-        <article>
-          <ion-icon aria-hidden="true" name="storefront-outline"></ion-icon>
-          <h3>Click &amp; collect</h3>
-          <p>Bestil online og hent i din lokale WheelWare butik.</p>
-        </article>
-        <article>
-          <ion-icon aria-hidden="true" name="cube-outline"></ion-icon>
-          <h3>Levering</h3>
-          <p>Dag-til-dag levering på lagerførte produkter.</p>
-        </article>
-        <article>
-          <ion-icon aria-hidden="true" name="shield-checkmark-outline"></ion-icon>
-          <h3>Prismatch</h3>
-          <p>Fair priser på reservedele, tilbehør og hjulpakker.</p>
-        </article>
-      </section>
-    </main>
-
-    <footer id="support" class="site-footer">
-      <div class="footer-main">
-        <div class="footer-brand">
-          <a href="/" class="footer-logo" aria-label="WheelWare forside">
-            <img src="wheelware-logo.png" alt="WheelWare" />
-          </a>
-          <p>Alt til bil, hjul, cykel, fritid og værksted samlet ét sted.</p>
-          <div class="footer-social" aria-label="Sociale medier">
-            <a href="#" aria-label="Facebook">
-              <ion-icon aria-hidden="true" name="logo-facebook"></ion-icon>
-            </a>
-            <a href="#" aria-label="Instagram">
-              <ion-icon aria-hidden="true" name="logo-instagram"></ion-icon>
-            </a>
-            <a href="#" aria-label="YouTube">
-              <ion-icon aria-hidden="true" name="logo-youtube"></ion-icon>
-            </a>
-            <a href="#" aria-label="LinkedIn">
-              <ion-icon aria-hidden="true" name="logo-linkedin"></ion-icon>
-            </a>
-          </div>
-        </div>
-
-        <div class="footer-col">
-          <h4>Kundeservice</h4>
-          <a href="#support">Kontakt os</a>
-          <a href="#support">Levering &amp; fragt</a>
-          <a href="#support">Returnering</a>
-          <a href="#support">FAQ</a>
-        </div>
-
-        <div class="footer-col">
-          <h4>Shop</h4>
-          <a href="#products">Tilbud</a>
-          <a href="#products">Dæk &amp; fælge</a>
-          <a href="#products">Reservedele</a>
-          <a href="#products">Værktøj</a>
-        </div>
-
-        <div class="footer-col">
-          <h4>Om WheelWare</h4>
-          <a href="#stores">Butikker</a>
-          <a href="#">Karriere</a>
-          <a href="#">Presse</a>
-          <a href="#">Bæredygtighed</a>
-        </div>
-
-        <div class="footer-col footer-contact">
-          <h4>Kontakt</h4>
-          <a href="tel:+4570000000">
-            <ion-icon aria-hidden="true" name="call-outline"></ion-icon>
-            +45 70 00 00 00
-          </a>
-          <a href="mailto:hej@wheelware.dk">
-            <ion-icon aria-hidden="true" name="mail-outline"></ion-icon>
-            hej@wheelware.dk
-          </a>
-          <span>
-            <ion-icon aria-hidden="true" name="time-outline"></ion-icon>
-            Man-fre 8-18 · Lør 9-14
-          </span>
-        </div>
+        <p>Til rengøring, organisering, opladning og komfort i bilen.</p>
       </div>
 
-      <div class="footer-bottom">
-        <span>&copy; <span id="footer-year"></span> WheelWare A/S — CVR 12 34 56 78</span>
-        <nav aria-label="Juridisk">
-          <a href="#">Handelsbetingelser</a>
-          <a href="#">Privatlivspolitik</a>
-          <a href="#">Cookies</a>
-        </nav>
+      <div class="filter-row" id="filter-row" aria-label="Produktfiltre"></div>
+      <div class="product-grid" id="product-grid"></div>
+      <p class="empty-state" id="empty-state" hidden>Ingen produkter matcher dit filter.</p>
+    </section>
+
+    <section class="spotlight">
+      <div class="spotlight-image">
+        <img src="assets/products/magnetic-phone-holder.png" alt="Foldbar magnetisk mobilholder" />
       </div>
-    </footer>
+      <div class="spotlight-copy">
+        <span class="eyebrow">Lille detalje. Stor forskel.</span>
+        <h2>Telefonen på plads – uden at fylde.</h2>
+        <p>
+          Den foldbare magnetiske holder giver et sikkert overblik og pakkes
+          næsten helt væk, når du ikke bruger den.
+        </p>
+        <ul>
+          <li><ion-icon name="checkmark-outline"></ion-icon>Foldbart, pladsbesparende design</li>
+          <li><ion-icon name="checkmark-outline"></ion-icon>Stabil sugekop til instrumentbordet</li>
+          <li><ion-icon name="checkmark-outline"></ion-icon>Justerbar vinkel med én hånd</li>
+        </ul>
+        <a class="button button-dark" href="#products">Se mobilholderen</a>
+      </div>
+    </section>
+
+    <section class="why-us" id="why-us">
+      <div class="section-heading centered">
+        <div>
+          <span class="eyebrow">Til bilen</span>
+          <h2>Praktisk udstyr til hverdagen.</h2>
+        </div>
+        <p>Små løsninger, der hjælper med at holde bilen ren, organiseret og klar til turen.</p>
+      </div>
+      <div class="value-grid">
+        <article><span>01</span><ion-icon name="search-outline"></ion-icon>
+          <h3>Nøje udvalgt</h3>
+          <p>Hvert produkt løser et konkret problem i bilen.</p>
+        </article>
+        <article><span>02</span><ion-icon name="diamond-outline"></ion-icon>
+          <h3>Enkelt design</h3>
+          <p>Diskrete produkter, der passer ind i moderne biler.</p>
+        </article>
+        <article><span>03</span><ion-icon name="car-sport-outline"></ion-icon>
+          <h3>Klar til hverdagen</h3>
+          <p>Praktiske produkter, der er nemme at bruge og lette at have med.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer id="support">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <img src="wheelware-logo.png" alt="WheelWare" />
+        <p>Smarte produkter, der gør hver køretur enklere.</p>
+      </div>
+      <div>
+        <h3>Shop</h3>
+        <a href="#products">Alle produkter</a>
+        <a href="#products">Rengøring</a>
+        <a href="#products">Organisering</a>
+        <a href="#products">Elektronik</a>
+      </div>
+      <div>
+        <h3>Kundeservice</h3>
+        <a href="mailto:hej@wheelware.dk">hej@wheelware.dk</a>
+        <a href="#">Levering og retur</a>
+        <a href="#">Ofte stillede spørgsmål</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="footer-year"></span> WheelWare</span>
+      <span>Handelsbetingelser · Privatliv · Cookies</span>
+    </div>
+  </footer>
+
+  <div class="cart-backdrop" id="cart-backdrop" hidden></div>
+  <aside class="cart-drawer" id="cart-drawer" aria-hidden="true" aria-labelledby="cart-title">
+    <div class="cart-header">
+      <div>
+        <span class="eyebrow">Din bestilling</span>
+        <h2 id="cart-title">Kurv</h2>
+      </div>
+      <button class="cart-close" id="cart-close" type="button" aria-label="Luk kurv">
+        <ion-icon name="close-outline"></ion-icon>
+      </button>
+    </div>
+
+    <div class="cart-items" id="cart-items"></div>
+    <div class="cart-empty" id="cart-empty">
+      <ion-icon name="bag-handle-outline"></ion-icon>
+      <h3>Din kurv er tom</h3>
+      <p>Tilføj et produkt for at fortsætte til betaling.</p>
+      <button class="button button-primary" id="continue-shopping" type="button">Se produkter</button>
+    </div>
+
+    <div class="cart-checkout" id="cart-checkout" hidden>
+      <div class="cart-total-row"><span>Subtotal</span><strong id="cart-subtotal">0 kr.</strong></div>
+      <div class="cart-total-row"><span>Levering</span><strong>Beregnes ved checkout</strong></div>
+      <div class="cart-total-row grand-total"><span>I alt</span><strong id="cart-total">0 kr.</strong></div>
+
+      <div class="payment-heading">
+        <span>Vælg betalingsmetode</span>
+        <div><ion-icon name="logo-paypal"></ion-icon><ion-icon name="card-outline"></ion-icon></div>
+      </div>
+      <p class="payment-status" id="payment-status">Indlæser betalingsmuligheder…</p>
+      <div id="paypal-button-container"></div>
+
+      <div class="card-payment" id="card-payment" hidden>
+        <div class="payment-divider"><span>eller betal med kort</span></div>
+        <label>Kortholders navn<div class="card-field" id="card-name-field"></div></label>
+        <label>Kortnummer<div class="card-field" id="card-number-field"></div></label>
+        <div class="card-field-row">
+          <label>Udløbsdato<div class="card-field" id="card-expiry-field"></div></label>
+          <label>CVV<div class="card-field" id="card-cvv-field"></div></label>
+        </div>
+        <button class="card-submit" id="card-submit" type="button">Betal med kort</button>
+      </div>
+
+      <p class="checkout-note">
+        <ion-icon name="lock-closed-outline"></ion-icon>
+        Betalingen håndteres af PayPal.
+      </p>
+    </div>
+  </aside>
+
+  <div class="payment-success" id="payment-success" hidden>
+    <div>
+      <ion-icon name="checkmark-circle"></ion-icon>
+      <h2>Tak for din bestilling</h2>
+      <p id="payment-success-message">Din betaling er gennemført.</p>
+      <button class="button button-primary" id="payment-success-close" type="button">Færdig</button>
+    </div>
   </div>
 
+  <div class="toast" id="toast" role="status" aria-live="polite">Produktet er lagt i kurven</div>
   <script src="script.js"></script>
 </body>
 
