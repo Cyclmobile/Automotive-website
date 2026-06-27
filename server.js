@@ -16,6 +16,7 @@ const catalog = new Map([
   [3, { sku: "WW-ORG-01", title: "Smart opbevaringssæt", price: 249 }],
   [4, { sku: "WW-HLD-01", title: "Foldbar magnetisk mobilholder", price: 349 }],
   [5, { sku: "WW-AIR-01", title: "Minimalistisk bilduft", price: 129 }],
+  [6, { sku: "WW-PKG-01", title: "WheelWare komplet bilpakke", price: 1199 }],
 ]);
 
 const mimeTypes = {

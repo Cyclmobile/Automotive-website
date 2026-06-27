@@ -57,7 +57,7 @@
               name="arrow-forward-outline"></ion-icon></a>
         </div>
         <div class="hero-proof">
-          <div><strong>5</strong><span>udvalgte produkter</span></div>
+          <div><strong>6</strong><span>produkter og pakker</span></div>
           <div><strong>Enkelt</strong><span>sortiment</span></div>
           <div><strong>4,8</strong><span>kundevurdering</span></div>
         </div>
@@ -164,6 +164,31 @@
       <span>Handelsbetingelser · Privatliv · Cookies</span>
     </div>
   </footer>
+
+  <div class="detail-backdrop" id="detail-backdrop" hidden></div>
+  <section class="product-detail-modal" id="product-detail-modal" aria-hidden="true" aria-labelledby="detail-title">
+    <button class="detail-close" id="detail-close" type="button" aria-label="Luk produktbeskrivelse">
+      <ion-icon name="close-outline"></ion-icon>
+    </button>
+    <div class="detail-layout">
+      <div class="detail-image">
+        <img id="detail-image" src="" alt="" />
+      </div>
+      <div class="detail-content">
+        <span class="eyebrow" id="detail-category"></span>
+        <h2 id="detail-title"></h2>
+        <p class="detail-subtitle" id="detail-subtitle"></p>
+        <div class="detail-copy" id="detail-copy"></div>
+        <div class="detail-purchase">
+          <strong id="detail-price"></strong>
+          <button class="button button-primary" id="detail-add" type="button">
+            <ion-icon name="bag-add-outline"></ion-icon>
+            Tilføj til kurv
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <div class="cart-backdrop" id="cart-backdrop" hidden></div>
   <aside class="cart-drawer" id="cart-drawer" aria-hidden="true" aria-labelledby="cart-title">
