@@ -443,7 +443,9 @@ document.querySelector("#card-submit").addEventListener("click", async () => {
 document.querySelector("#detail-close").addEventListener("click", closeProductDetail);
 detailBackdrop.addEventListener("click", closeProductDetail);
 document.querySelector("#detail-add").addEventListener("click", () => {
-  if (activeDetailProductId) addToCart(activeDetailProductId);
+  if (!activeDetailProductId) return;
+  addToCart(activeDetailProductId);
+  openCart();
 });
 document.querySelector("#cart-button").addEventListener("click", openCart);
 document.querySelector("#cart-close").addEventListener("click", closeCart);
